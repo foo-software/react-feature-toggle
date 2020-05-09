@@ -19,26 +19,12 @@ export default ({ toggleName }) => {
     toggles
   } = useContext(ToggleContext);
 
-  const toggle = toggles[toggleName] || {
-    isOn: null,
-    status: null
-  };
-
-  const setToggleState = isOn =>
+  const setToggleState = state =>
     setToggles({
       ...toggles,
       [toggleName]: {
-        ...toggle,
-        isOn
-      }
-    });
-
-  const setToggleStatus = status =>
-    setToggles({
-      ...toggles,
-      [toggleName]: {
-        ...toggle,
-        status
+        ...(!toggles[toggleName] ? {} : toggles[toggleName]),
+        ...state
       }
     });
 
@@ -46,7 +32,9 @@ export default ({ toggleName }) => {
   const fetchFunction = userDefinedFetch || fetch;
 
   useEffect(() => {
-    setToggleStatus(TOGGLE_FETCH_STATE_PENDING);
+    setToggleState({
+      status: TOGGLE_FETCH_STATE_PENDING
+    });
 
     async function fetchToggle() {
       try {
@@ -65,10 +53,14 @@ export default ({ toggleName }) => {
             `didn't get the expected response:\n${JSON.stringify(responseJson)}`
           );
         }
-        setToggleStatus(TOGGLE_FETCH_STATE_FULFILLED);
-        setToggleState(responseJson.data.on);
+        setToggleState({
+          isOn: responseJson.data.on,
+          status: TOGGLE_FETCH_STATE_FULFILLED
+        });
       } catch (error) {
-        setToggleStatus(TOGGLE_FETCH_STATE_REJECTED);
+        setToggleState({
+          status: TOGGLE_FETCH_STATE_REJECTED
+        });
         warn(`${PACKAGE_NAME}:\n`, error);
       }
     }
@@ -76,5 +68,10 @@ export default ({ toggleName }) => {
     fetchToggle();
   }, []);
 
-  return toggle;
+  return (
+    toggles[toggleName] || {
+      isOn: null,
+      status: null
+    }
+  );
 };
