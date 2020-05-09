@@ -53,6 +53,7 @@ export default ({ toggleName }) => {
             `didn't get the expected response:\n${JSON.stringify(responseJson)}`
           );
         }
+
         setToggleState({
           isOn: responseJson.data.on,
           status: TOGGLE_FETCH_STATE_FULFILLED
