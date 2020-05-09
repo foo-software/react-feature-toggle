@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@foo-software/react-feature-toggle should match snapshot 1`] = `
+Object {
+  "ToggleProvider": [Function],
+  "useToggle": [Function],
+}
+`;
