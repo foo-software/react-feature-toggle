@@ -1,4 +1,4 @@
-# `@foo-software/react-feature-toggle`
+# React Feature Toggle (`@foo-software/react-feature-toggle`)
 
 A feature toggle for React. Feature toggles (otherwise known as feature flags or feature switches) are a software development technique that provides a way of turning functionality or display on and off during runtime, without deploying new code. This allows for more control and experimentation over the full lifecycle of features. Feature toggles are a best practice in DevOps, often occurring within distributed version control systems.
 
@@ -68,3 +68,62 @@ export default () => {
   );
 };
 ```
+
+# `ToggleProvider`: Props
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>accountId</code></td>
+    <td>string</td>
+    <td>yes</td>
+    <td>The account ID of your Toggle Tools account as explained in the <a href="#setup">setup section</a>.</td>
+  </tr>
+  <tr>
+    <td><code>environmentName</code></td>
+    <td>string</td>
+    <td>yes</td>
+    <td>The environment the toggle belongs to by name as explained in the <a href="#setup">setup section</a>.</td>
+  </tr>
+  <tr>
+    <td><code>fetch</code></td>
+    <td>function</td>
+    <td>no</td>
+    <td>By default React Feature Toggle will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch Web API</a> to fetch toggle state from Toggle Tools API. This prop can be used to override by providing preferable fetch function. It should share the same API.</td>
+  </tr>
+  <tr>
+    <td><code>children</code></td>
+    <td>node</td>
+    <td>yes</td>
+    <td>The node to be rendered by the provider. This is similar to any standard provider component.</td>
+  </tr>
+</table>
+
+# `useToggle`
+
+Accepts an object argument with a `toggleName` property. `toggleName` should be the value described in the [setup section](#setup).
+
+#### `useToggle`: Return Object
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>isOn</code></td>
+    <td>boolean</td>
+    <td>Signifies whether the toggle is toggled on.</td>
+  </tr>
+  <tr>
+    <td><code>status</code></td>
+    <td>oneOf([<code>null</code>, "<code>pending</code>", "<code>fulfilled</code>", "<code>rejected</code>"])</td>
+    <td>Fetch status of the toggle.</td>
+  </tr>
+</table>
