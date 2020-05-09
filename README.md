@@ -127,3 +127,20 @@ Accepts an object argument with a `toggleName` property. `toggleName` should be 
     <td>Fetch status of the toggle.</td>
   </tr>
 </table>
+
+## `ToggleContext`
+
+A React context set by `ToggleProvider`. It holds values from props passed to `ToggleProvider` with the addition of a value named `toggles`. `toggles` is a collection of all toggles set in the current runtime. Below is an example.
+
+```json
+{
+  "myToggle1": {
+    "isOn": false,
+    "status": "fulfilled"
+  },
+  "myToggle2": {
+    "isOn": null,
+    "status": "rejected"
+  }
+}
+```
