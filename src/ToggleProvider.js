@@ -4,9 +4,11 @@ import ToggleContext from './ToggleContext';
 export default ({ accountId, environmentName, fetch, children }) => {
   const [toggles, setToggles] = useState({});
 
-  <ToggleContext.Provider
-    value={{ accountId, environmentName, fetch, toggles, setToggles }}
-  >
-    {children}
-  </ToggleContext.Provider>;
+  return (
+    <ToggleContext.Provider
+      value={{ accountId, environmentName, fetch, toggles, setToggles }}
+    >
+      {children}
+    </ToggleContext.Provider>
+  );
 };
