@@ -44,10 +44,10 @@ export default ({ toggleName }) => {
   const fetchFunction = userDefinedFetch || fetch;
 
   useEffect(() => {
-    try {
-      setToggleStatus(TOGGLE_FETCH_STATE_PENDING);
+    setToggleStatus(TOGGLE_FETCH_STATE_PENDING);
 
-      async function fetchToggle() {
+    async function fetchToggle() {
+      try {
         // fetch toggle data from the API
         const response = await fetchFunction(
           `${API_URL}/account/${accountId}/toggle/${environmentName}/${toggleName}/state`,
@@ -70,13 +70,13 @@ export default ({ toggleName }) => {
         }
         setToggleStatus(TOGGLE_FETCH_STATE_FULFILLED);
         setToggleState(responseJson.data.on);
+      } catch (error) {
+        setToggleStatus(TOGGLE_FETCH_STATE_REJECTED);
+        console.log(PACKAGE_NAME, error);
       }
-
-      fetchToggle();
-    } catch (error) {
-      setToggleStatus(TOGGLE_FETCH_STATE_REJECTED);
-      console.log(PACKAGE_NAME, error);
     }
+
+    fetchToggle();
   }, []);
 
   return toggle;
