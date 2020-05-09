@@ -8,6 +8,8 @@ import {
 } from './constants';
 import ToggleContext from './ToggleContext';
 
+const warn = console.warn || console.log;
+
 export default ({ toggleName }) => {
   const {
     accountId,
@@ -67,7 +69,7 @@ export default ({ toggleName }) => {
         setToggleState(responseJson.data.on);
       } catch (error) {
         setToggleStatus(TOGGLE_FETCH_STATE_REJECTED);
-        console.log(`${PACKAGE_NAME}:\n`, error);
+        warn(`${PACKAGE_NAME}:\n`, error);
       }
     }
 
