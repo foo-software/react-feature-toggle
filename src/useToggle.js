@@ -50,12 +50,7 @@ export default ({ toggleName }) => {
       try {
         // fetch toggle data from the API
         const response = await fetchFunction(
-          `${API_URL}/account/${accountId}/toggle/${environmentName}/${toggleName}/state`,
-          {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }
+          `${API_URL}/account/${accountId}/toggle/${environmentName}/${toggleName}/state`
         );
         const responseJson = await response.json();
 
@@ -72,7 +67,7 @@ export default ({ toggleName }) => {
         setToggleState(responseJson.data.on);
       } catch (error) {
         setToggleStatus(TOGGLE_FETCH_STATE_REJECTED);
-        console.log(PACKAGE_NAME, error);
+        console.log(`${PACKAGE_NAME}:\n`, error);
       }
     }
 
