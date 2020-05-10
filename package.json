@@ -4,6 +4,7 @@
   "description": "A feature toggle for React",
   "keywords": [
     "react",
+    "hooks",
     "feature toggle",
     "feature flag",
     "feature switch"
