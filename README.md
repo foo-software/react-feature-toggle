@@ -6,9 +6,9 @@ A feature toggle for React. Feature toggles (otherwise known as feature flags or
 
 ## Setup
 
-This library depends on an account with [Toggle Tools](https://www.toggle.tools/). Follow the steps below to get started.
+This library depends on a [feature toggle account with Foo](https://www.foo.software). Follow the steps below to get started.
 
-1. Choose an account from the [plans page](https://www.toggle.tools/pricing) and register.
+1. Choose an account from the [plans page](https://www.foo.software/pricing) and register.
 2. Navigate to the account page and click on the API tab. Make note of the account ID.
 3. Create a feature toggle in the dashboard. If needed [follow the docs](https://www.foo.software/toggle-tools-how-to-create-a-feature-toggle/)!
 4. Navigate to the toggle detail page through the dashboard screen and make note of the "Environment API Name" and "Toggle API Name".
